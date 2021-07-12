@@ -93,10 +93,10 @@ async def _(event):
         x = await get_user_join(user.id)
         if x is True:
             msg = welcome_msg.format(mention=mention, title=title, fullname=fullname, username=username, name=name, last=last, channel=f"@{channel}")
-            butt = [Button.url("Canal", url=f"https://t.me/{channel}")]
+            butt = [Button.url("📣 Canal", url=f"https://t.me/{channel}")]
         else:
             msg = welcome_not_joined.format(mention=mention, title=title, fullname=fullname, username=username, name=name, last=last, channel=f"@{channel}")
-            butt = [Button.url("Canal", url=f"https://t.me/{channel}"), Button.inline("Desmutearme", data=f"unmute_{user.id}")]
+            butt = [Button.url("📣 Canal", url=f"https://t.me/{channel}"), Button.inline("✅ Desmutearme", data=f"unmute_{user.id}")]
             await BotzHub.edit_permissions(event.chat.id, user.id, until_date=None, send_messages=False)
         
         await event.reply(msg, buttons=butt)
@@ -137,14 +137,14 @@ async def _(event):
                 print(str(e))
                 return
             msg = f"Bienvenido a {(await event.get_chat()).title}, {nm}!\n¡Es bueno verte aquí!"
-            butt = [Button.url("Canal", url=f"https://t.me/{channel}")]
+            butt = [Button.url("📣 Canal", url=f"https://t.me/{channel}")]
             await event.edit(msg, buttons=butt)
     else:
         await event.answer("¡Eres un miembro antiguo y puedes hablar libremente! ¡Esto no es para ti!", cache_time=0, alert=True)
 
 @BotzHub.on(events.NewMessage(pattern="/start"))
 async def strt(event):
-    await event.reply(f"Hola. Soy un bot de suscripción forzoso creado especialmente para @{channel}!\n\nCreado por @DKzippO :)", buttons=[Button.url("Canal", url=f"https://t.me/{channel}"), Button.url("🍃 AsAEcos", url="https://t.me/AsAEcos")])
+    await event.reply(f"Hola. Soy un bot de suscripción forzoso creado especialmente para @{channel}!\n\nCreado por @DKzippO :)", buttons=[Button.url("📣 Canal", url=f"https://t.me/{channel}"), Button.url("🍃 AsAEcos", url="https://t.me/AsAEcos")])
 
     
 print("ForceSub Bot ha comenzado.\nVisita @AsaEcos")
